@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\FoodController;
+use App\Http\Controllers\API\MidtransController;
 use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\API\UsersController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +29,13 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::get('transaction', [TransactionController::class, 'all']);
     Route::post('transaction/{id}', [TransactionController::class, 'update']);
+
+    Route::post('checkout', [TransactionController::class, 'checkout']);
 });
 
 Route::post('login', [UsersController::class, 'login']);
 Route::post('register', [UsersController::class, 'register']);
 
 Route::get('food', [FoodController::class, 'all']);
+
+Route::post('midtrans/callback', [MidtransController::class, 'callback']);
