@@ -60,12 +60,12 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function getCreatedAtAttribute($value) 
+    public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->timestamp;
     }
 
-    public function getUpdatedAtAttribute($value) 
+    public function getUpdatedAtAttribute($value)
     {
         return Carbon::parse($value)->timestamp;
     }

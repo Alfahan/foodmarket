@@ -84,6 +84,7 @@ class UsersController extends Controller
             $user = User::where('email', $request->email)->first();
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
+            dd($tokenResult);
 
             return ResponseFormatter::success([
                 'access_token' => $tokenResult,
