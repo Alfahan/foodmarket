@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Midtrans\Config;
+use Midtrans\Snap;
 
 class TransactionController extends Controller
 {
@@ -61,7 +62,7 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $transaction = Transaction::findOrFail($id)
+        $transaction = Transaction::findOrFail($id);
 
         $transaction->update($request->all());
 
@@ -94,7 +95,7 @@ class TransactionController extends Controller
         Config::$is3ds = config('service.midtrans.is3ds');
 
         // Panggil transaksi yg tadi sudah di buat
-        $transaction = Transaction::with(['food', user])->find($transaction->id);
+        $transaction = Transaction::with(['food', 'user'])->find($transaction->id);
 
         // Membuat Transaksi Midtrans
         $midtrans = [
